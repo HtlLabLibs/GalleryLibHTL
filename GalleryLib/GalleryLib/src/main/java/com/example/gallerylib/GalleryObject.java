@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Noah Tobias Lackenberger
@@ -85,6 +86,8 @@ public class GalleryObject {
             Bitmap bitmap = BitmapFactory.decodeFile(imageFiles[i].getAbsolutePath(), options);
             imageItems.add(new ImageItem(bitmap, imageFiles[i].getName()));
         }
+
+        Collections.reverse(imageItems);
 
         return imageItems;
     }
