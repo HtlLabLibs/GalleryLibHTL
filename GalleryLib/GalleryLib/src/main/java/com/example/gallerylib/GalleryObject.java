@@ -116,8 +116,8 @@ public class GalleryObject {
         Context context;
         private int resourceId;
         private ArrayList data = new ArrayList();
-        private ImageView imageView;
-        private TextView textView;
+        private int imageView;
+        private int textView;
 
         /***
          *      The construcor for the custom Grid View adapter
@@ -125,11 +125,11 @@ public class GalleryObject {
          *      @param context The Activity as Context
          *      @param resourceId row layout of the activity_gallery.xml
          *      @param data the getData()-Method of te Library
-         *      @param textView The TextView from the row_layout.xml
-         *      @param imageView The ImageView from the row_layout.xml
+         *      @param textView The TextView-ID from the row_layout.xml
+         *      @param imageView The ImageView-ID from the row_layout.xml
          * </p>
          */
-        public gridViewAdapter(Context context, int resourceId, ArrayList data, @NonNull TextView textView, @NonNull ImageView imageView) {
+        public gridViewAdapter(Context context, int resourceId, ArrayList data, @NonNull int textView, @NonNull int imageView) {
             super(context, resourceId, data);
             this.context = context;
             this.resourceId = resourceId;
@@ -161,8 +161,8 @@ public class GalleryObject {
                 row = inflater.inflate(resourceId, parent, false);
                 holder = new ViewHolder();
 
-                holder.imageTitle = this.textView;
-                holder.image = this.imageView;
+                holder.imageTitle = row.findViewById(textView);
+                holder.image = row.findViewById(imageView);
 
                 row.setTag(holder);
             } else {
@@ -177,7 +177,7 @@ public class GalleryObject {
         }
 
 
-        protected class ViewHolder {
+        private class ViewHolder {
             TextView imageTitle;
             ImageView image;
         };
