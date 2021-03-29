@@ -106,7 +106,7 @@ public class GalleryObject {
 
 
     /**
-     *      This class reprecents a custom Grid View adapter for the gallery
+     *      This class represents a custom Grid View adapter for the gallery
      * <p>
      *      @version 1.0
      *      @since 1.0
@@ -119,6 +119,16 @@ public class GalleryObject {
         private ImageView imageView;
         private TextView textView;
 
+        /***
+         *      The construcor for the custom Grid View adapter
+         * <p>
+         *      @param context The Activity as Context
+         *      @param resourceId row layout of the activity_gallery.xml
+         *      @param data the getData()-Method of te Library
+         *      @param textView The TextView from the row_layout.xml
+         *      @param imageView The ImageView from the row_layout.xml
+         * </p>
+         */
         public gridViewAdapter(Context context, int resourceId, ArrayList data, @NonNull TextView textView, @NonNull ImageView imageView) {
             super(context, resourceId, data);
             this.context = context;
@@ -128,6 +138,17 @@ public class GalleryObject {
             this.textView = textView;
         }
 
+        /***
+         *      This method is important for the background processes for the gallery. It must never be called by the user!
+         * <p>
+         *      @param position the position of the Image
+         *      @param convertView the row as View
+         *      @param parent the parent of the Image as ViewGroup
+         * </p>
+         * <p>
+         *      @return The row as View
+         * </p>
+         */
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -156,7 +177,7 @@ public class GalleryObject {
         }
 
 
-        class ViewHolder {
+        protected class ViewHolder {
             TextView imageTitle;
             ImageView image;
         };
@@ -169,7 +190,7 @@ public class GalleryObject {
      *      @since 1.0
      * </p>
      */
-    public static class ImageItem {
+    private static class ImageItem {
         private Bitmap image;
         private String title;
 
